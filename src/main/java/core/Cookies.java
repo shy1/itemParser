@@ -11,12 +11,14 @@ public class Cookies extends Food{
     private int count;
     private int pCount;
     private String name;
+    private String mPattern;
     private ArrayList<BigDecimal> prices;
 
     public Cookies(){
         this.count = 0;
         this.pCount = 0;
         this.setName("Cookies");
+        this.setPattern("[cC][oO0][oO0][kK][iI][eE][sS]");
         this.prices = new ArrayList<BigDecimal>();
     }
 }

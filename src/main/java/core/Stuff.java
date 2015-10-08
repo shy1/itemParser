@@ -21,7 +21,7 @@ public class Stuff {
             "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
 
     public static void main(String[] args){
-        ArrayList<String[]> sList = new ArrayList<String[]>();
+        ArrayList<String[]> asList = new ArrayList<String[]>();
         String[] si2;
 
         // split input into items separated by ##
@@ -30,11 +30,11 @@ public class Stuff {
         // split the items into their 4 parts and add each part to an arraylist
         for (int i = 0; i < si.length; i++){
             si2 = si[i].split("[;^%*@!]");
-            sList.add(si2);
+            asList.add(si2);
         }
 
         Parser parser = new Parser();
 
-        parser.getFoods(sList);
+        parser.getFoods(asList);
     }
 }

@@ -12,11 +12,13 @@ public class Apples extends Food{
     private int pCount;
     private String name;
     private ArrayList<BigDecimal> prices;
+    private String mPattern;
 
     public Apples(){
         this.count = 0;
         this.pCount = 0;
-        this.setName("Apples");
         this.prices = new ArrayList<BigDecimal>();
+        this.setName("Apples");
+        this.setPattern("[aA][pP][pP][lL][eE][sS]");
     }
 }

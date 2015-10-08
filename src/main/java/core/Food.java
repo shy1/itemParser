@@ -15,7 +15,7 @@ public class Food {
     private String timeStr;
     private String divider1 = "=============";
     private String divider2 = "-------------";
-
+    private String mPattern;
 
     public Food(){
     }
@@ -38,6 +38,14 @@ public class Food {
 
     public void setName(String _name){
         this.name = _name;
+    }
+
+    public void setPattern(String _pattern){
+        mPattern = _pattern;
+    }
+
+    public String getPattern(){
+        return mPattern;
     }
 
 

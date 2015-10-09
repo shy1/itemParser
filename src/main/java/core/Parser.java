@@ -37,6 +37,7 @@ public class Parser {
             eTimes = "time";
         } else eTimes = "times";
 
+        // display error count and list the items with errors
         System.out.printf("\nErrors                    seen: %d %-5s", eCount, eTimes);
         System.out.printf("\n%S%26s\n", divider1, divider1);
         for (int n = 0; n < errorLog.size(); n++){
@@ -47,7 +48,6 @@ public class Parser {
 
     /**
      * checkFood method to get the count of a particular food and its prices
-     * @param - arraylist of divided input string
      * @param food - specific food object that provides the name of the food and match pattern
      */
     public void checkFood(Food food){
@@ -66,7 +66,7 @@ public class Parser {
 
                 // get the text after name:
                 String nValue = siTemp.substring(5).trim();
-                //System.out.println(nValue);
+
                 // check that name text exists and increment error counter if it doesn't
                 if (nValue.length() < 1) {
                     eCount++;
@@ -75,9 +75,10 @@ public class Parser {
 
                 // check if name text matches the pattern of a food
                 if (nValue.matches(food.getPattern())) {
-                    //System.out.println(nValue);
                     mCount++;
                     String pTemp = saTemp[j+1].substring(6).trim();
+
+                    // add item index to errIndex if error is found, else add item price to mPrices array
                     if (pTemp.length() < 1) {
                         eCount++;
                         errIndex.add(i);
@@ -120,6 +121,7 @@ public class Parser {
 
             int rmIdx = errIndex.get(x);
 
+            // build string for found errors and add that string to the errorLog
             StringBuilder builder = new StringBuilder();
             for(String s : sList.get(rmIdx)) {
                 builder.append(s);
@@ -127,9 +129,11 @@ public class Parser {
             String tempError = builder.toString();
             errorLog.add(tempError);
 
+            // remove items with errors from the main list so that they are not counted multiple times
             sList.remove(rmIdx);
         }
 
+        // remove items from errIndex
         for (int m = errIndex.size() - 1; m >= 0 ; m--){
             errIndex.remove(m);
         }

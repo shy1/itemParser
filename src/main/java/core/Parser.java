@@ -15,6 +15,7 @@ public class Parser {
     String eTimes;
     public static ArrayList<String[]> sList = new ArrayList<String[]>();
     public List<Integer> errIndex = new ArrayList<Integer>();
+    ArrayList<String> errorLog = new ArrayList<String>();
 
     /**
      * getFoods method calls checkFood for each food type and displays error count afterwards
@@ -23,10 +24,10 @@ public class Parser {
     public void getFoods(ArrayList<String[]> _sList) {
 
         sList = _sList;
+        String divider1 = "=============";
 
 
         checkFood(milk);
-
         checkFood(bread);
         checkFood(cookies);
         checkFood(apples);
@@ -37,6 +38,10 @@ public class Parser {
         } else eTimes = "times";
 
         System.out.printf("\nErrors                    seen: %d %-5s", eCount, eTimes);
+        System.out.printf("\n%S%26s\n", divider1, divider1);
+        for (int n = 0; n < errorLog.size(); n++){
+            System.out.println(errorLog.get(n));
+        }
 
     }
 
@@ -112,27 +117,23 @@ public class Parser {
         food.setCount(mPrices.size());
         food.displayPrices();
         for (int x = errIndex.size() - 1; x >= 0; x--){
-//            System.out.println(sList.size());
-//            System.out.println(errIndex.get(x));
-            int rmIdx = errIndex.get(x);
-//           String[] remove = sList.remove(rmIdx);
-            sList.remove(rmIdx);
-        //String[] remove = sList.remove(27);
 
-//        System.out.println(remove[1]);
-//        System.out.println(sList.size());
+            int rmIdx = errIndex.get(x);
+
+            StringBuilder builder = new StringBuilder();
+            for(String s : sList.get(rmIdx)) {
+                builder.append(s);
+            }
+            String tempError = builder.toString();
+            errorLog.add(tempError);
+
+            sList.remove(rmIdx);
         }
+
         for (int m = errIndex.size() - 1; m >= 0 ; m--){
-//            System.out.println(errIndex.get(m));
             errIndex.remove(m);
         }
 
-//        System.out.println(errIndex.size());
-//        System.out.println(sList.size());
-
     }
-
-
-
 
 }
